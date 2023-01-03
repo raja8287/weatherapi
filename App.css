@@ -36,29 +36,22 @@ display: flex;
 }
 .HOme{
  margin: 0px 30px;
-  border: 2px solid black;
   align-items: center;
-  width: 30%;
+  width: 50%;
   height: 30%;
-  background-color: whitesmoke;
- 
-
+ display:flex;
+column-gap: 10px;
+flex-wrap: wrap;
+margin: 0px 10px;
 }
 .homes{
   padding: 20px 100px;
   justify-content: center;
   display:flex;
-  width: 80%;
+  width: 100%;
   height: 30%;
 }
-.detail{
-  text-overflow:ellipsis;
-  width: 100%;
-  height: 10%;
-}
-.detail p{
-  text-overflow: ellipsis;
-}
+
 .footer{
   width: 100%;
   height: 3pc;
@@ -68,4 +61,17 @@ display: flex;
   font-size: 30px;
   padding: 10px 10px;
   column-gap: 60px;
+}
+.slider{
+  background-color: #8EC5FC;
+  background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+ position: relative;
+ height: 250px;
+ width: 100%;
+}
+.slider img{
+  margin: 0 10px;
+
+  height: 200px;
+  width: 30%;
 }
