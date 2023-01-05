@@ -20,7 +20,7 @@ function Six(){
   document.getElementById("sliderimage3").src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU99Wbh5cFVcNUevvBR0qPsvP7qYRSPWEciQ&usqp=CAU";
 }
 
-setInterval(First,2000);
+setInterval(First,12000);
 setInterval(Sec,4000);
 setInterval(T,6000);
 setInterval(F,8000);
