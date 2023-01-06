@@ -37,30 +37,67 @@ const getWt=(city)=>{
 
 
 
-
+const[cimg,setCimg]=useState([])
 
   function Ele() {
     var x = document.getElementById("search").value;
     document.getElementById("city").innerHTML = x;
+    document.getElementById("cinfo").innerHTML=x;
+    document.getElementById("infolink").href="https://en.wikipedia.org/wiki/"+x;
+    document.getElementById("imgofcity").src=cimg+"&q=80&w=400";
     getWt(x)
     status()
-    document.getElementById("cityinfo").src="https://en.wikipedia.org/wiki/"+x;
+    
+   
     
   }
+ 
+ 
+ 
+  function imgcha(){
+    var x=document.getElementById("search").value;
+    const options = {
+      method: 'GET',
+      headers: {
+        'Key': 'qqLIdOj9U2KxBQFY_pP7kyGe63blQ_2o5cnxY_SlqBI',
+        
+      }
+    };
+    var ke="qqLIdOj9U2KxBQFY_pP7kyGe63blQ_2o5cnxY_SlqBI"
+    fetch('https://api.unsplash.com/search/photos?query='+x+'&client_id='+ke+'&per_page=1', options)
+      .then(response => response.json())
+      .then(response =>{ console.log(response.results[0].urls.small)
+      setCimg(response.results[0].urls.small)
+    }
+      )
+      
+      .catch(err => console.error(err));
+  }
+  
+
+ 
+ 
   function status(){
     var r=da.temp
 
     if(r>=20 ){
-      document.getElementById("Statimg").innerHTML="HOT"
-      document.getElementById("H").innerHTML= "hii";
+      document.getElementById("Statimg").innerHTML="&#x1F31E;"
+      document.getElementById("tempinfo").innerHTML="HOT OUT SIDE"
+      document.getElementById("statbtn").style.background="red"
 
     }
      else if(r<20){
-      document.getElementById("Statimg").innerHTML="COLD"
+      document.getElementById("Statimg").innerHTML="&#x2744;"
+      document.getElementById("tempinfo").innerHTML="COLD OUT SIDE"
+      document.getElementById("statbtn").style.background="rgb(0, 174, 255)"
+
+
 
     }
     else{
-      document.getElementById("Statimg").innerHTML="NO INFO AVILABLE"
+      document.getElementById("Statimg").innerHTML="&#128533;"
+      document.getElementById("tempinfo").innerHTML="NO INFORMATION"
+
     }
   }
 
@@ -72,6 +109,7 @@ const getWt=(city)=>{
         id="sub"
        onClick={() => {
          Ele();
+         imgcha();
         }}
       >
         cl
@@ -112,31 +150,29 @@ const getWt=(city)=>{
               STATUS
             </h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>30 users <span id="Statimg"></span></li>
-             <span id="H">hi</span>
-              <img src="" id="wetimg"/>
+              <h1><li> <span id="Statimg"></span></li></h1>
+             
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary">
-              Contact us
+            <button type="button" class="w-100 btn btn-lg btn-warning" id="statbtn" >
+            <b id="tempinfo">KNOW MORE</b> 
             </button>
           </div>
 
-          <div class="card-body" style={{ border: "2px solid black" }}>
+          <div class="card-body" id="cityinfo" style={{ border: "2px solid black" } }>
             <h1 class="card-title pricing-card-title">
               <span id="city">CITY</span>
             </h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>
-              </li>
-            <iframe src="https://en.wikipedia.org/" id="cityinfo" title="city"></iframe>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">
-              Sign up for free
+          
+              
+          <img src="https://images.pexels.com/photos/5841807/pexels-photo-5841807.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" id="imgofcity"/>
+          
+            <button type="button" class="w-100 btn btn-lg btn-warning" >
+              <a href=""  id="infolink" ><b> ABOUT</b> <b><span id="cinfo">cc</span></b></a>
+              
             </button>
           </div>
         </div>
       </div>
-      <Sliding />
     </>
   );
 }

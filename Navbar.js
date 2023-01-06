@@ -9,7 +9,7 @@ function Navbar(){
     <>
         <div className='Navbar'>
 
-       <div className='logo'><b>DL_WATHER</b></div>
+       <div className='logo'><b><b id="cels">&#8451;</b>elsius.COM</b></div>
 
         <div className='Main'><Link to='/'  style={{textDecoration: 'none'}}>HOME</Link></div>
        <div className='Ab'> <Link to='/About'style={{textDecoration: 'none'}}>ABOUT</Link></div>

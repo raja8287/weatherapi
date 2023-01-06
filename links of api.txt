@@ -1,0 +1,6 @@
+unsplash photo api link:
+key:OsqHSRinxRT6PewwJ3bgjtSncJDMj3UJz0kxtgOfqZA
+key:qqLIdOj9U2KxBQFY_pP7kyGe63blQ_2o5cnxY_SlqBI
+link:https://api.unsplash.com/search/photos?query=canada&client_id=OsqHSRinxRT6PewwJ3bgjtSncJDMj3UJz0kxtgOfqZA
+weather api:
+link:https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=india
