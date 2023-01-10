@@ -6,14 +6,15 @@ import Sliding from './Sliding';
 
 function App() {
   return (
+    <>
+    
     <div className="App">
      <Home/>
      <Footer/>
-
-  
+         </div>
    
-    
-    </div>
+    </>
+
   );
 }
 

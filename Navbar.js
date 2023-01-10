@@ -11,9 +11,9 @@ function Navbar(){
 
        <div className='logo'><b><b id="cels">&#8451;</b>elsius.COM</b></div>
 
-        <div className='Main'><Link to='/'  style={{textDecoration: 'none'}}>HOME</Link></div>
-       <div className='Ab'> <Link to='/About'style={{textDecoration: 'none'}}>ABOUT</Link></div>
-        <div className='Con'><Link to='/Contect'style={{textDecoration: 'none'}}>CONTECT</Link></div>
+        <div className='Main'><Link to='/'  style={{textDecoration: 'none'}}><span className='ma'>HOME</span></Link></div>
+       <div className='Ab'> <Link to='/About'style={{textDecoration: 'none'}}><span className='ma'>ABOUT</span></Link></div>
+        <div className='Con'><Link to='/Contect'style={{textDecoration: 'none'}}> <span className='ma'>CONTECT</span></Link></div>
         
     </div>
     <div>

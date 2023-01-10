@@ -5,8 +5,8 @@
   border: 0;
 }
 .Home{
-  background-color: #8EC5FC;
-background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+  background-color: #6435ff;
+background-image: linear-gradient(180deg, rgb(103, 103, 254) 20%,rgb(57, 198, 245) 80%);
 
   height: 50rem;
 }
@@ -17,10 +17,13 @@ background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
   margin-left: 10%;
   width: 80%;
   height: 40px;
-  background-color: gold;
-  text-align: center;
+  background-color: rgb(103, 103, 254);
+    text-align: center;
   align-items: center;
 display: flex;
+}
+.About{
+
 }
 .logo{
   width: 30%;
@@ -34,27 +37,12 @@ display: flex;
 .Con{
   width: 20%;
 }
-.HOme{
- margin: 0px 30px;
-  align-items: center;
-  width: 50%;
-  height: 30%;
- display:flex;
-column-gap: 3px;
-flex-wrap: wrap;
-margin: 0px 10px;
-}
-.homes{
-  padding: 20px 100px;
-  justify-content: center;
-  display:flex;
-  width: 100%;
-  height: 30%;
-}
+
 
 .footer{
-  background-color: #8EC5FC;
-  background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+  background-color: #6435ff;
+background-image: linear-gradient(180deg, rgb(103, 103, 254) 20%,rgb(57, 198, 245) 80%);
+
     position: relative;
   width: 100%;
   height: 5pc;
@@ -115,4 +103,483 @@ margin: 0px 10px;
 }
 #cels{
   font-size: 40px;
+}
+.searc{
+  text-transform: uppercase;
+}
+
+
+
+
+
+
+
+
+
+.location {
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0;
+}
+.date {
+  font-size: 1em;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* Remove outline > Apply other styles for accessibility */
+:focus {
+  outline: none;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  color: #fff;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-weight: 300;
+  position: relative;
+  letter-spacing: 0.05rem;
+  line-height: 1.5;
+  text-align: center;
+}
+a {
+  color: #6D8CA0;
+  font-weight: 700;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+footer {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.8rem;
+  letter-spacing: 0.07em;
+  line-height: 2;
+  padding: 30px 0;
+  width: 100%;
+}
+#lastUpdated {
+  color: #fff;
+  padding: 5% 0;
+}
+#lastUpdated:before {
+  content: '-- ';
+}
+#lastUpdated:after {
+  content: ' --';
+}
+
+/*----------------
+  Containers
+-----------------*/
+.wrapper {
+  color: #fff;
+  overflow: auto;
+  width: 100%;
+  padding-top: 24px;
+}
+
+/*----------------
+  Status Bar
+-----------------*/
+#status {
+  background-color: #FFECAE;
+  color: rgba(0,0,0,0.5);
+  display: none;
+  font-size: 1rem;
+  width: 100%;
+  z-index: 100;
+}
+#status p {
+  display: inline-block;
+  padding: 10px 40px 6px;
+}
+#status a {
+  color: #fff;
+}
+#status .close {
+  background: none;
+  color: rgba(0,0,0,0.5);
+  float: right;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+}
+/*** Error & Success Messages ***/
+#status.error {
+  background-color: #EE9797;
+}
+#status.success {
+  background-color: #82C886;
+}
+#status.error, #status.error .close,
+#status.success, #status.success .close {
+  color: #fff;
+}
+#status.error .fa-exclamation-triangle,
+#status.success .fa-check-circle {
+  margin-right: 10px;
+}
+
+/*----------------
+  Buttons
+-----------------*/
+button {
+  border: none;
+  cursor: pointer;
+}
+nav {
+  font-size: 1rem;
+  margin: 0 auto;
+  padding: 5% 0 10%;
+}
+#locateBtn, #unitBtn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50%;
+  color: #fff;
+  height: 40px;
+  transition: background 1s ease-in-out, border 0.2s ease-in-out;
+  width: 40px;
+}
+#locateBtn.on, #unitBtn.on {
+  background: rgba(255,255,255,0.25);
+}
+#locateBtn:focus, #locateBtn:hover, #unitBtn:focus, #unitBtn:hover {
+  border: 1px solid rgba(255,255,255,0.75);
+}
+#locateBtn {
+  margin-right: 10px;
+}
+#unitBtn {
+  font-weight: 300;
+  padding-right: 3px;
+  padding-top: 2px;
+  text-transform: uppercase;
+}
+#unitBtn:before {
+  content: '\00b0'; /* Degree symbol */
+  padding: 1px;
+}
+/* locateBtn Pulse Animation */
+#locateBtn.pulse {
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  20% { background: rgba(255,255,255,0.25); }
+}
+
+/*----------------
+  Current Weather
+-----------------*/
+#current {
+  padding: 10% 5% 20%;
+  position: relative;
+}
+.location {
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0;
+}
+.date {
+  font-size: 1em;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+#current .weatherIcon {
+  height: 100px;
+  margin: 10% auto 7%;
+  width: 100px;
+}
+.temp {
+  font-size: 3em;
+  line-height: 1.3;
+}
+.temp:after {
+  content: '\00b0';
+  margin-right: -0.3em;
+}
+#current .conditions {
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+
+
+
+/*----------------
+  Media Queries
+-----------------*/
+@media (min-width: 375px) {
+  nav {
+    left: 5%;
+    position: absolute;
+    top: 17%;
+  }
+  #locateBtn, #unitBtn {
+    display: block;
+    margin-bottom: 10px;
+  }
+  #current { 
+    padding-bottom: 15%;
+    padding-top: 15%;
+  }
+  #search{
+    justify-content: center;
+    align-items: center;
+    margin-right: 130px;
+    margin-top: 10px;
+    
+  }
+  #sub{
+    margin-top: 10px;
+
+  }
+}
+@media (min-width: 550px) {
+  nav { top: 8%; }
+  /* Current Weather */
+  #current { 
+    font-size: 1.3rem;
+    padding-bottom: 10%;
+    padding-top: 2%;
+  }
+  .date, #current .conditions { font-size: 0.9em;}
+  #current .weatherIcon {
+    font-size: 0.95em;
+    height: 120px;
+    margin: 7% auto 3%;
+    width: 120px;
+  }
+  footer { font-size: 0.9rem; }
+}
+
+@media (min-width: 880px) {
+  nav { top: -7%; }
+  #current {
+    font-size: 1.5rem;
+    padding-bottom: 7%;
+    padding-top: 7%;
+  }
+  #current .weatherIcon {
+    font-size: 0.82em;
+    margin: 3% auto 1%;
+  }
+  #lastUpdated {
+    padding: 3%;
+  }
+}
+#locat{
+  text-transform: uppercase;
+  font-size: 70px;
+  
+}
+#inne{
+  font-size: 95px;
+}
+
+#search{
+  float: right;
+  padding: 2px 6px;
+  border: 1px solid black; 
+  border-radius: 10px ;
+  background:  rgb(103, 103, 254);
+color:white ;
+}
+#sub{
+  margin-right:4px ;
+  padding: 2px;
+  background: transparent;
+  font-size: 15px;
+  float: right;
+
+border:1px solid black;
+  border-radius: 10px ;
+color:white ;
+}
+
+.photo{
+  display: flex;
+  justify-content: center;
+  
+}
+.detail{
+  column-gap: 40px;
+  width: 50%;
+  display: flex;
+ justify-content: center;
+}
+.humi{
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+}
+.wind{
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+}
+.feel{
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+
+}
+.photoimg{
+  border-radius: 10%;
+  width: 40%;
+  border: 1px solid rebeccapurple;
+float: left;  
+
+}
+
+.photoimg img{
+  border-radius: 10%;
+
+ justify-content: center;
+  width: 100%;
+  height:80% ;
+}
+.threeline{
+  background: red;
+}
+.se{
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+
+
+@media (max-width: 1000px){
+  #tl{
+    background: red;
+  }
+  .Navbar{
+    display: none;
+  }
+  .photoimg{
+    display: none;
+  }
+  .footer{
+    width: 100%;
+  }
+  .social_media{
+    background-color: #82C886;
+    font-size:20px;
+    column-gap: 40px;
+  }
+  .right{
+    
+    justify-content: center;
+    font-size: small;
+    background-color:skyblue;
+  }
+  .searc{
+    justify-content: center;
+    size: 10px;
+    margin:10px 10px ;
+  }
+  .sub{
+    justify-content: center;
+    margin:0px 10px ;
+  }
+  #locat{
+    font-size: 40px;
+  }
+  #days{
+    font-size: 13px;
+  }
+  #inneR{
+  font-size:40px;
+  }
+  #current .weatherIcon{
+    font-size: 0.95em;
+    height: 120px;
+    margin: 1% auto 1%;
+    width: 105px;
+
+  }
+  .photo{
+    margin: 0px 0px;
+    display: flex;
+  }
+  .se{
+    margin:auto ;
+  }
+
+}
+
+
+
+
+
+@media (min-width: 625px){
+
+
+}
+
+
+
+
+#search{
+  margin-right: 88px;
+  margin-top: 10px;
+}
+#sub{
+  margin: 10px 6px;
+}
+.se{
+  margin: auto;
+}
+.ma:hover{
+  border-radius: 10px;
+  background:transparent;
+  color: black;
+
+}
+.ma:active{
+  color: #6435ff;
+}
+#search:hover{
+  color: white;
+  background: black;
+  border: none;
+  box-shadow:0px 0px 10px 0px;
+
+}
+#sub:hover{
+  color:white;
+  background: black;
+  box-shadow:0px 1px 10px 0px;
+}
+.photoimg:hover{
+  cursor: pointer;
+  transition: 0.6s ease-in;
+width: 60%;
+opacity: 0.8;
+}
+#tl{
+  background: black;
+  color: white;
+  cursor: pointer;
+  display:inline-block;
+  position: relative;
 }

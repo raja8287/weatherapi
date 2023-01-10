@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Sliding from "./Sliding";
 
 function HO() {
-  const [da,setDa]=useState([])
+  const [da, setDa] = useState([]);
   const options = {
     method: "GET",
     headers: {
@@ -11,168 +11,205 @@ function HO() {
     },
   };
 
-const getWt=(city)=>{
-  fetch(
-    'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city='+city,
-    options
-  )
-    .then((response) => response.json())
-    .then((response) => {
-      console.log(response)
-      setDa(response);
-
-   document.getElementById  ("Cloud").innerHTML = response.cloud_pct;
-   document.getElementById  ("Feels_like").innerHTML = response.feels_like;
-   document.getElementById  ("Humidity").innerHTML = response.humidity;
-   document.getElementById  ("Max_temp").innerHTML = response.max_temp;
-   document.getElementById  ("Min_temp").innerHTML = response.min_temp;
-   document.getElementById  ("Sunrise").innerHTML = response.sunrise;
-   document.getElementById  ("Sunset").innerHTML = response.sunset;
-   document.getElementById  ("Temp").innerHTML = response.temp;
-   document.getElementById  ("Wind_degrees").innerHTML = response.wind_degrees;
-   document.getElementById  ("Wind_speed").innerHTML =response.wind_speed ;
-    })
-    
-  }
+  const getWt = (city) => {
+    fetch(
+      "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=" + city,
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setDa(response);
+        document.getElementById("temp").innerHTML=da.temp;
 
 
+      });
+  };
 
-const[cimg,setCimg]=useState([])
+  const [cimg, setCimg] = useState([]);
 
   function Ele() {
     var x = document.getElementById("search").value;
-    document.getElementById("city").innerHTML = x;
-    document.getElementById("cinfo").innerHTML=x;
-    document.getElementById("infolink").href="https://en.wikipedia.org/wiki/"+x;
-    document.getElementById("imgofcity").src=cimg+"&q=80&w=400";
-    getWt(x)
-    status()
+  
     
+      document.getElementById("locat").innerHTML = x;
+    
+    
+    
+  
    
-    
+    getWt(x);
+    status();
+    Ferentocal();
   }
- 
- 
- 
-  function imgcha(){
-    var x=document.getElementById("search").value;
+
+  function imgcha() {
+    var x = document.getElementById("search").value;
     const options = {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Key': 'qqLIdOj9U2KxBQFY_pP7kyGe63blQ_2o5cnxY_SlqBI',
-        
-      }
+        Key: "qqLIdOj9U2KxBQFY_pP7kyGe63blQ_2o5cnxY_SlqBI",
+      },
     };
-    var ke="qqLIdOj9U2KxBQFY_pP7kyGe63blQ_2o5cnxY_SlqBI"
-    fetch('https://api.unsplash.com/search/photos?query='+x+'&client_id='+ke+'&per_page=1', options)
-      .then(response => response.json())
-      .then(response =>{ console.log(response.results[0].urls.small)
-      setCimg(response.results[0].urls.small)
-    }
-      )
-      
-      .catch(err => console.error(err));
+    var ke = "qqLIdOj9U2KxBQFY_pP7kyGe63blQ_2o5cnxY_SlqBI";
+    fetch(
+      "https://api.unsplash.com/search/photos?query=" +
+        x +
+        "&client_id=" +
+        ke +
+        "&per_page=1&q=80&w=400",
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response.results[0].urls.small);
+        setCimg(response.results[0].urls.small);
+      })
+
+      .catch((err) => console.error(err));
   }
+
+  function status() {
+    var r=da.temp
+    
+
+    if (r >= 20) {
+      document.getElementById("condit").innerHTML = "SUNNY";
+      document.getElementById("inneR").innerHTML = "&#x1F31E;";
+    } else if (r < 20) {
+      document.getElementById("condit").innerHTML = "COLD";
+      document.getElementById("inneR").innerHTML = "&#x2744;";
+    } else {
+      document.getElementById("condit").innerHTML = "NOT AVIBABLE";
+      document.getElementById("inneR").innerHTML = "&#128533;";
+    }
+  }
+function Ferentocal(){
+  var i=(da.temp*1.8)+32;
+ 
+    document.getElementById("f").innerHTML=Math.trunc(i)+"F";
+
   
 
- 
- 
-  function status(){
-    var r=da.temp
+}
+function Redirect()
+{
+  var city=document.getElementById("search").value;
+  window.location.href = "https://en.wikipedia.org/wiki/"+city;
+}
 
-    if(r>=20 ){
-      document.getElementById("Statimg").innerHTML="&#x1F31E;"
-      document.getElementById("tempinfo").innerHTML="HOT OUT SIDE"
-      document.getElementById("statbtn").style.background="red"
-
-    }
-     else if(r<20){
-      document.getElementById("Statimg").innerHTML="&#x2744;"
-      document.getElementById("tempinfo").innerHTML="COLD OUT SIDE"
-      document.getElementById("statbtn").style.background="rgb(0, 174, 255)"
-
-
-
-    }
-    else{
-      document.getElementById("Statimg").innerHTML="&#128533;"
-      document.getElementById("tempinfo").innerHTML="NO INFORMATION"
-
-    }
+function Toggel(){
+  var d=document.getElementById("f");
+  if(d.style.display==="block"){
+    document.getElementById("f").style.display="none";
   }
+  else{
+    document.getElementById("f").style.display="block";
+
+  }
+}
+
+
 
   return (
     <>
-      <input type="text" placeholder="CITY" id="search" onChange={()=>{Ele()}} />
-      <button
-        type="submit"
-        id="sub"
-       onClick={() => {
-         Ele();
-         imgcha();
+    <div className="se" id="SE">
+    <input
+        type="text"
+        placeholder="CITY"
+        id="search"
+        className="searc"
+        onChange={() => {
+        
+          Ele();status();
         }}
-      >
-        cl
-      </button>
-
-      <div className="homes">
-        <div className="HOme">
-
-          <div class="card-body" style={{ border: "2px solid black" }}>
-            <h1 class="card-title pricing-card-title">
-               <span class="w-100 btn btn-lg btn-warning"><b>INFORMATION</b></span>
-            </h1>
-          
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>
-              <b>TEMP:
-               <h1><span id="Temp">{da.temp}&#8451;</span></h1> 
-               
-                </b>
-              </li>
-              <li>
-                <b>CLOUD:<span id="Cloud" >0</span></b>
-              </li>
-              <li>
-                <b>HUMIDITY:<span id="humidity">{da.humidity}%</span></b>
-              </li>
-              <li><b>FEELS LIKE:<span id="Feels_like">ms</span></b></li>
-              <li><b>WIND SPEED:<span id="Sun_rise">{da.wind_speed} km/hr</span></b></li>
-              <li><b>WIND DEGREES:<span id="Sun_set">{da.wind_degrees}&#176;</span></b></li>
+      />
+      <button type="submit" id="sub" onClick={() => {Ele(); imgcha()}}><i class="fa fa-search"></i></button>
+    </div>
+     
+<div className="abc">
 
 
-            </ul>
+
+      <div id="status">
+        <p></p>
+        <button class="close">
+          <i class="fa fa-times" aria-hidden="true" ></i>
+        </button>
+      </div>
+      <div id="current" class="wrapper" style={{ padding: "20px 0px" }}>
+        <nav>
+         
+
+            <button id="locateBtn"  onClick={()=>{Redirect()}} >
+            <i class="fa fa-location-arrow" aria-hidden="true">
+           </i>
+          </button>
+            
            
-          </div>
+          <div className="photoimg">
+          <img src={cimg} alt=""/>
+        </div>
+          <button id="unitBtn" data-units="f"/* onClick={()=>{Toggel();}}*/>
+            <span id="f">f</span>
+          </button>
 
-          <div class="card-body" style={{ border: "2px solid black" }}>
-            <h1 class="card-title pricing-card-title">
-              STATUS
-            </h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <h1><li> <span id="Statimg"></span></li></h1>
-             
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-warning" id="statbtn" >
-            <b id="tempinfo">KNOW MORE</b> 
-            </button>
-          </div>
-
-          <div class="card-body" id="cityinfo" style={{ border: "2px solid black" } }>
-            <h1 class="card-title pricing-card-title">
-              <span id="city">CITY</span>
-            </h1>
-          
-              
-          <img src="https://images.pexels.com/photos/5841807/pexels-photo-5841807.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" id="imgofcity"/>
-          
-            <button type="button" class="w-100 btn btn-lg btn-warning" >
-              <a href=""  id="infolink" ><b> ABOUT</b> <b><span id="cinfo">cc</span></b></a>
-              
-            </button>
+        </nav>
+        <h1 class="location" id="locat">
+         <span>CITY, IL</span> 
+        </h1>
+        <h2 class="date" id="days">Sunday, January 8, 2023</h2>
+        <div class="weatherIcon" id="wedicon">
+          <div class="sunny">
+            <div class="inner" id="inne">
+              <span id="inneR">&#x1F31E;</span>
+            </div>
           </div>
         </div>
+        <p class="temp" id="tempo">
+         <span id="di">{da.temp}C</span> <span id="fara"></span>
+        </p>
+        <p class="conditions">
+          <span id="condit">Sunny</span>
+        </p>
+
+        
+
+        
       </div>
+<div className="photo">
+  <div className="detail">
+    <div className="humi"><p> HUMIDITY:<h3><b>{da.humidity}</b>%</h3></p></div>
+    <div className="wind"><p>WIND SPEED:<h3>{da.wind_speed} KM/H</h3></p></div>
+    <div className="feel"><p>FEELS LIKE:<h3>{da.feels_like}</h3></p></div>
+    
+    
+  </div>
+  
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </>
   );
 }

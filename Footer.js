@@ -12,7 +12,7 @@ function Footer() {
       <a href='https://www.google.com/'><i className='fa fa-google'></i></a>
       <a href='https://www.youtube.com/watch?v=AL8-TiZFgmw&ab_channel=RealHit'><i className='fa fa-youtube'></i></a>
       <a href='https://www.reddit.com/new'><i className='fa fa-reddit'></i></a>
-      <a href='https://www.snapchat.com/'><i className='fa fa-snapchat'></i></a>
+    
 
      </div>
      <div className="right">
